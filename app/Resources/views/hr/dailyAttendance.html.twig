@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}HR | Daily Attendance{% endblock %}
+
+{% block header %}Daily Attendance{% endblock %}
+
+{% block col60 %}
+    <div class="col-60">
+        <table>
+            <thead>
+                <tr>
+                    <th>Employee Name</th>
+                    <th>Employee Attendance</th>
+                </tr>
+            </thead>
+            <tbody class="text-center">
+            {% for l in attendance %}
+                <tr>
+                    <td>{{ l.name }}</td>
+                    <td class="{{ l.status }}">{{ l.status }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

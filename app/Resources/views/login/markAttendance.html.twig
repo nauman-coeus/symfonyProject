@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <section class="container">
+        <header class="row text-center">
+            <h1>Mark Attendance</h1>
+        </header>
+    </section>
+
+    <div class="row">
+        <div class="col-40">&nbsp</div>
+        <div class="col-20 blackBox">
+            <div class="row">
+                <h3 class="text-center">Welcome {{ user|capitalize }}</h3>
+            </div>
+            <hr>
+            <div class="row">
+                <a href="{{ path('mark_time_in', {'id': id}) }}" class="orangeBtn">Mark Time In</a>
+                <br><br>
+                <h3>Time In : {{ timeIn }}</h3>
+            </div>
+            <hr>
+            <div class="row">
+                <a href="{{ path('mark_time_out', {'id': id}) }}" class="orangeBtn">Mark Time Out</a>
+                <br><br>
+                <h3>Time Out : {{ timeOut }}</h3>
+            </div>
+            <hr>
+            <div class="row">
+                <a href="" id="logoutBtn">Logout</a>
+            </div>
+        </div>
+        <div class="col-40">&nbsp</div>
+    </div>
+{% endblock %}

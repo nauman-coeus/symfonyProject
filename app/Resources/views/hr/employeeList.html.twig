@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}HR | Employee's List{% endblock %}
+
+{% block header %}Employee's List{% endblock %}
+
+{% block col60 %}
+    <div class="col-60">
+        <table>
+            <tbody>
+            {% for l in data %}
+                <tr>
+                    <td><img src="{{ asset('images/employees_img/') ~ l.image }}" width="100px" height="auto" alt="Emp Image"></td>
+                    <td>{{ l.name }}</td>
+                    <td><a href="{{ path('hr_edit_employee', {'id': l.id}) }}">Edit</a></td>
+                    <td><a href="{{ path('hr_delete_employee', {'id': l.id}) }}">Delete</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

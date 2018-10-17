@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}HR | Add Employee{% endblock %}
+
+{% block header %}Add Employee{% endblock %}
+
+{% block col60 %}
+    <div class="col-60">
+        {{ form_start(form) }}
+            <div class="row">
+                <h3>Name</h3>
+                {{ form_row(form.name) }}
+            </div>
+            <div class="row">
+                <h3>Email</h3>
+                {{ form_row(form.email) }}
+            </div>
+            <div class="row">
+                <h3>Salary</h3>
+                {{ form_row(form.salary) }}
+            </div>
+            <div class="row">
+                <h3>Password:</h3>
+                {{ form_row(form.password) }}
+            </div>
+            <div class="row">
+                <h3>Department</h3>
+                    {{ form_row(form.department) }}
+            </div>
+            <div class="row">
+                <h3>Profile Picture</h3>
+                {{ form_row(form.imageFile) }}
+            </div>
+            <div class="row">
+                <h3>Boss</h3>
+                {{ form_row(form.boss_id) }}
+            </div>
+            <div class="row">
+                <h3>Designation:</h3>
+                {{ form_row(form.designation) }}
+            </div>
+            <hr><br><br>
+            <div class="row">
+                {{ form_row(form.submitBtn) }}
+            </div>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

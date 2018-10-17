@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Attendance | Login{% endblock %}
+{% block body %}
+    <div class="container">
+        <section class="row">
+            <header class="text-center">
+                <h1>Login Page</h1>
+            </header>
+        </section>
+
+        <div class="row">
+            <div class="col-40">&nbsp</div>
+            <div class="col-20 blackBox">
+                {{ form_start(form) }}
+                <div class="row">
+                    <h3>Email</h3>
+                    {{ form_row(form.email) }}
+                </div>
+                <div class="row">
+                    <h3>Password</h3>
+                    {{ form_row(form.password) }}
+                </div>
+                <div class="row">
+                    {{ form_row(form.submitBtn) }}
+                </div>
+                {{ form_end(form) }}
+            </div>
+            <div class="col-40">&nbsp</div>
+        </div>
+    </div>
+{% endblock %}

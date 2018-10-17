@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}HR | Monthly Attendance{% endblock %}
+
+{% block header %}Monthly Attendance{% endblock %}
+
+{% block col60 %}
+    <div class="col-60">
+        <div class="row">
+            {% for key,l in attendance %}
+            <div class="col-20">
+                <h3 class="text-center">{{ key }}</h3>
+                <hr>
+                {% for m in l %}
+                    <p class="{{ m.status }}">{{ m.status }} : {{ m.att_count }}</p>
+                {% endfor %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

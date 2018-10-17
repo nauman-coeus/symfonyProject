@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+        <link rel="icon" type="image/png" href="{{ asset('download.jpeg') }}">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    </head>
+    <body>
+    {% for label, messages in app.flashes %}
+        <div class="row message text-center {{ label }}">
+            {% for msg in messages %}
+                <p>{{ msg }}</p>
+            {% endfor %}
+        </div>
+    {% endfor %}
+
+    {% block body %}
+        <div class="container">
+            <section class="row text-center">
+                <header>
+                    <h1>{% block header %}{% endblock %}</h1>
+                </header>
+            </section>
+            <div class="row">
+                <div class="col-40 sideBar">
+                    {% block sideBar %}
+                    <ul>
+                        <li><a href="{{ path('hr_add_employee') }}">Add Employee</a></li>
+                        <li><a href="{{ path('hr_employee_list') }}">Employee's List</a></li>
+                        <li><a href="{{ path('hr_daily_attendance') }}">Daily Attendance</a></li>
+                        <li><a href="{{ path('hr_monthly_attendance') }}">Monthly Attendance</a></li>
+                        <li><a href="" id="logoutBtn">LogOut</a></li>
+                    </ul>
+                    {% endblock %}
+                </div>
+                {% block col60 %}{% endblock %}
+            </div>
+        </div>
+    {% endblock %}
+    {% block javascripts %}{% endblock %}
+    </body>
+</html>

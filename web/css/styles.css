@@ -1,0 +1,187 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	padding: 20px 0 0 0;
+	margin: 0;
+	font-family: sans-serif;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.orangeBtn {
+	background-color: #eb8c00;
+	color: white;
+}
+
+.userImg {
+	width: 100%;
+	height: auto;
+	display: block;
+}
+
+.message {
+	color: white;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+}
+
+.error {
+	background-color: #C82829;
+}
+
+.success {
+	background-color: seagreen;
+}
+
+.present {
+	color: seagreen;
+}
+
+.late {
+	color: #C82829;
+}
+
+.orangeBtn:hover {
+	background-color: white;
+	color: #eb8c00;
+	border: 2px solid #eb8c00;
+}
+
+.container {
+	width: 100%;
+	padding: 15px;
+}
+
+.row {
+	width: 100%;
+	margin-bottom: 10px;
+}
+
+.row::before, .row::after {
+	content: '';
+	clear: both;
+	display: table;
+}
+
+[class^='col-'] {
+	float: left;
+	padding: 10px;
+}
+
+.col-20 {
+	width: 20%;
+}
+
+.col-40 {
+	width: 40%;
+}
+
+.col-60 {
+	width: 60%;
+}
+
+h1 {
+	color: #eb8c00;
+	font-size: 30px;
+}
+
+.sideBar li {
+	list-style-type: none;
+}
+
+.sideBar li:not(:last-child)  {
+	margin-bottom: 5px;
+	border-bottom: 2px solid #1C1B1B;
+}
+
+.sideBar li:hover {
+	background-color:  #eb8c00;
+	color: white;
+}
+
+.sideBar li a, #logoutBtn {
+	padding: 10px 5px;
+	display: block;
+	width: 100%;
+	color: inherit;
+	text-decoration: none;
+}
+
+#logoutBtn {
+	background-color: red;
+	padding: 5px;
+	margin-top: 10px;
+	border: transparent;
+	border-radius: 5px;
+	color: white;
+	text-align: center;
+}
+
+.selected {
+	border-bottom: 2px solid #eb8c00 !important;
+	color: #eb8c00;
+}
+
+.selected a::after {
+	content: " >";
+}
+
+/*LOGIN PAGE / MARK ATTENDANCE
+===============================*/
+.blackBox {
+	background-color: #1C1B1B;
+	border: transparent;
+	border-radius: 10px;
+	color: white;
+	padding: 10px;
+}
+
+.blackBox input, .blackBox button, .blackBox a {
+	text-decoration: none;
+	width: 100%;
+	padding: 7px;
+	border: transparent;
+	border-radius: 5px;
+}
+
+.blackBox .row {
+	margin: 20px 0;
+} 
+
+.blackBox h3 {
+	padding: 0;
+	margin: 2px;
+}
+
+@media screen and (max-width: 767px) {
+	[class^='col-'] {
+		width: 100%;
+		float: none;
+		display: block;
+	}
+
+	.blackBox h3 {
+		text-align: center;
+	}
+}
+
+/*EMPLOYEE LIST PAGE
+====================*/
+
+table {
+	width: 100%;
+}
+
+table, tr, td, th {
+	border: 1px solid black;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
