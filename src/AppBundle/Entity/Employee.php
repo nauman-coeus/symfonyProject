@@ -9,25 +9,12 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
- * @ORM\Entity(repositoryClass="AppBundle\Repository\EmployeesRepository")
- * @ORM\Table(name="employees")
+ * @ORM\Entity()
+ * @ORM\Table()
  * @Vich\Uploadable
  */
-class Employees
+class Employee extends Utility
 {
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     * @ORM\Column(type="integer")
-     */
-    private $id;
-
-    /**
-     * @ORM\Column(type="string")
-     * @Assert\NotBlank()
-     */
-    private $name;
-
     /**
      * @ORM\Column(type="string", unique=true)
      * @Assert\NotBlank()
@@ -54,7 +41,7 @@ class Employees
     private $imageFile;
 
     /**
-     * @ORM\Column(type="string", nullable=true)
+     * @ORM\Column(type="integer", options={"unsigned":true}, nullable=true)
      * @Assert\NotBlank()
      * @Assert\Range(min="0", minMessage="Can not be Negative")
      */
@@ -74,14 +61,14 @@ class Employees
     private $designation;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Employees", inversedBy="emp_id")
+     * @ORM\ManyToMany(targetEntity="Employee", inversedBy="empId")
      */
-    private $boss_id;
+    private $bossId;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Employees", mappedBy="boss_id")
+     * @ORM\ManyToMany(targetEntity="Employee", mappedBy="bossId")
      */
-    private $emp_id;
+    private $empId;
 
     /**
      * @ORM\OneToMany(targetEntity="Attendance", mappedBy="employee")
@@ -89,31 +76,24 @@ class Employees
     private $attendance;
 
     /**
-     * @return mixed
+     * @return String
      */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getName()
+    public function __toString()
     {
         return $this->name;
     }
 
     /**
-     * @param mixed $name
+     * Employee constructor
      */
-    public function setName($name)
+    public function __construct()
     {
-        $this->name = $name;
+        $this->bossId = new ArrayCollection();
+        $this->empId = new ArrayCollection();
     }
 
     /**
-     * @return mixed
+     * @return String
      */
     public function getEmail()
     {
@@ -121,7 +101,7 @@ class Employees
     }
 
     /**
-     * @param mixed $email
+     * @param String $email
      */
     public function setEmail($email)
     {
@@ -129,7 +109,7 @@ class Employees
     }
 
     /**
-     * @return mixed
+     * @return String
      */
     public function getPassword()
     {
@@ -137,7 +117,7 @@ class Employees
     }
 
     /**
-     * @param mixed $password
+     * @param String $password
      */
     public function setPassword($password)
     {
@@ -145,7 +125,7 @@ class Employees
     }
 
     /**
-     * @return mixed
+     * @return String
      */
     public function getImage()
     {
@@ -153,7 +133,7 @@ class Employees
     }
 
     /**
-     * @param mixed $image
+     * @param String $image
      */
     public function setImage($image)
     {
@@ -161,7 +141,7 @@ class Employees
     }
 
     /**
-     * @return mixed
+     * @return File
      */
     public function getImageFile()
     {
@@ -169,15 +149,15 @@ class Employees
     }
 
     /**
-     * @param mixed $imageFile
+     * @param File $imageFile
      */
-    public function setImageFile(File $imageFile = null)
+    public function setImageFile($imageFile)
     {
         $this->imageFile = $imageFile;
     }
 
     /**
-     * @return mixed
+     * @return Integer
      */
     public function getSalary()
     {
@@ -185,7 +165,7 @@ class Employees
     }
 
     /**
-     * @param mixed $salary
+     * @param Integer $salary
      */
     public function setSalary($salary)
     {
@@ -193,7 +173,7 @@ class Employees
     }
 
     /**
-     * @return mixed
+     * @return Department
      */
     public function getDepartment()
     {
@@ -201,7 +181,7 @@ class Employees
     }
 
     /**
-     * @param mixed $department
+     * @param Department $department
      */
     public function setDepartment(Department $department)
     {
@@ -209,7 +189,7 @@ class Employees
     }
 
     /**
-     * @return mixed
+     * @return Designation
      */
     public function getDesignation()
     {
@@ -217,7 +197,7 @@ class Employees
     }
 
     /**
-     * @param mixed $designation
+     * @param Designation $designation
      */
     public function setDesignation(Designation $designation)
     {
@@ -225,7 +205,39 @@ class Employees
     }
 
     /**
-     * @return mixed
+     * @return Employee
+     */
+    public function getBossId()
+    {
+        return $this->bossId;
+    }
+
+    /**
+     * @param Employee $bossId
+     */
+    public function setBossId($bossId)
+    {
+        $this->bossId = $bossId;
+    }
+
+    /**
+     * @return Employee
+     */
+    public function getEmpId()
+    {
+        return $this->empId;
+    }
+
+    /**
+     * @param Employee $empId
+     */
+    public function setEmpId($empId)
+    {
+        $this->empId = $empId;
+    }
+
+    /**
+     * @return String
      */
     public function getAttendance()
     {
@@ -233,54 +245,10 @@ class Employees
     }
 
     /**
-     * @param mixed $attendance
+     * @param Attendance $attendance
      */
     public function setAttendance(Attendance $attendance)
     {
         $this->attendance = $attendance;
     }
-
-    /**
-     * @return mixed
-     */
-    public function getBossId()
-    {
-        return $this->boss_id;
-    }
-
-    /**
-     * @param mixed $boss_id
-     */
-    public function setBossId($boss_id)
-    {
-        $this->boss_id = $boss_id;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getEmpId()
-    {
-        return $this->emp_id;
-    }
-
-    /**
-     * @param mixed $emp_id
-     */
-    public function setEmpId($emp_id)
-    {
-        $this->emp_id = $emp_id;
-    }
-
-    public function __toString()
-    {
-        return $this->name;
-    }
-
-    public function __construct()
-    {
-        $this->boss_id = new ArrayCollection();
-        $this->emp_id = new ArrayCollection();
-    }
-
 }

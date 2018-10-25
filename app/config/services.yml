@@ -33,3 +33,9 @@ services:
     # AppBundle\Service\ExampleService:
     #     arguments:
     #         $someArgument: 'some_value'
+
+    app.attendance:
+        class: AppBundle\Service\AttendanceService
+        public: true
+        arguments:
+            - '@doctrine'

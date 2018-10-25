@@ -37,7 +37,7 @@
         </div>
         <div class="row">
             <h3>Boss</h3>
-            {{ form_row(form.boss_id) }}
+            {{ form_row(form.bossId) }}
         </div>
         <div class="row">
             <h3>Designation:</h3>
@@ -48,6 +48,6 @@
             {{ form_row(form.submitBtn, {'label': 'Edit Employee'}) }}
         </div>
      {{ form_end(form) }}
-        <button><a href="{{ path('hr_employee_list') }}">Cancel</a></button>
+        <button><a href="{{ path('employee_list') }}">Cancel</a></button>
     </div>
 {% endblock %}

@@ -6,41 +6,26 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="department")
+ * @ORM\Table()
  */
-class Department
+class Department extends Utility
 {
-
     /**
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     * @ORM\Column(type="integer")
-     */
-    private $id;
-
-
-    /**
-     * @ORM\Column(type="string")
-     */
-    private $name;
-
-
-    /**
-     * @ORM\OneToMany(targetEntity="Employees", mappedBy="department")
+     * @ORM\OneToMany(targetEntity="Employee", mappedBy="department")
      * @ORM\JoinColumn(onDelete="SET NULL")
      */
     private $employee;
 
     /**
-     * @return mixed
+     * @return String
      */
-    public function getId()
+    public function __toString()
     {
-        return $this->id;
+        return $this->getName();
     }
 
     /**
-     * @return mixed
+     * @return Employee
      */
     public function getEmployee()
     {
@@ -48,31 +33,10 @@ class Department
     }
 
     /**
-     * @param mixed $employee
+     * @param Employee $employee
      */
-    public function setEmployee($employee)
+    public function setEmployee(Employee $employee)
     {
         $this->employee = $employee;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * @param mixed $name
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-    }
-
-    public function __toString()
-    {
-        return $this->getName();
     }
 }

@@ -7,32 +7,28 @@ use Doctrine\ORM\Mapping as ORM;
 
 
 /**
- * @ORM\Entity
- * @ORM\Table(name="designation")
+ * @ORM\Entity()
+ * @ORM\Table()
  */
 
-class Designation
+class Designation extends Utility
 {
     /**
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     * @ORM\Column(type="integer")
-     */
-    private $id;
-
-    /**
-     * @ORM\Column(type="string")
-     */
-    private $name;
-
-    /**
-     * @ORM\OneToMany(targetEntity="Employees", mappedBy="designation")
+     * @ORM\OneToMany(targetEntity="Employee", mappedBy="designation")
      * @ORM\JoinColumn(onDelete="SET NULL")
      */
     private $employee;
 
     /**
-     * @return mixed
+     * @return String
+     */
+    public function __toString()
+    {
+        return $this->getName();
+    }
+
+    /**
+     * @return Employee
      */
     public function getEmployee()
     {
@@ -40,39 +36,10 @@ class Designation
     }
 
     /**
-     * @param mixed $employee
+     * @param Employee $employee
      */
     public function setEmployee($employee)
     {
         $this->employee = $employee;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * @param mixed $name
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-    }
-
-    public function __toString()
-    {
-        return $this->getName();
     }
 }

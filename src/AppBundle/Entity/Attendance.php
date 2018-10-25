@@ -2,34 +2,14 @@
 
 namespace AppBundle\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="AppBundle\Repository\AttendanceRepository")
- * @ORM\Table(name="attendance")
+ * @ORM\Table()
  */
-class Attendance
+class Attendance extends Utility
 {
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     * @ORM\Column(type="integer")
-     */
-    private $id;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Employees", inversedBy="attendance")
-     * @ORM\JoinColumn(onDelete="CASCADE")
-     */
-    private $employee;
-
-    /**
-     * @ORM\Column(type="string")
-     */
-    private $status;
-
-
     /**
      * @ORM\Column(type="string")
      */
@@ -38,55 +18,21 @@ class Attendance
     /**
      * @ORM\Column(type="string")
      */
-    private $time_in;
+    private $timeIn;
 
     /**
      * @ORM\Column(type="string", nullable=true)
      */
-    private $time_out;
+    private $timeOut;
 
     /**
-     * @return mixed
+     * @ORM\ManyToOne(targetEntity="Employee", inversedBy="attendance")
+     * @ORM\JoinColumn(onDelete="CASCADE")
      */
-    public function getId()
-    {
-        return $this->id;
-    }
+    private $employee;
 
     /**
-     * @return mixed
-     */
-    public function getEmployee()
-    {
-        return $this->employee;
-    }
-
-    /**
-     * @param mixed $employee
-     */
-    public function setEmployee($employee)
-    {
-        $this->employee = $employee;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getStatus()
-    {
-        return $this->status;
-    }
-
-    /**
-     * @param mixed $status
-     */
-    public function setStatus($status)
-    {
-        $this->status = $status;
-    }
-
-    /**
-     * @return mixed
+     * @return String
      */
     public function getDate()
     {
@@ -94,7 +40,7 @@ class Attendance
     }
 
     /**
-     * @param mixed $date
+     * @param String $date
      */
     public function setDate($date)
     {
@@ -102,44 +48,50 @@ class Attendance
     }
 
     /**
-     * @return mixed
+     * @return String
      */
     public function getTimeIn()
     {
-        return $this->time_in;
+        return $this->timeIn;
     }
 
     /**
-     * @param mixed $time_in
+     * @param String $timeIn
      */
-    public function setTimeIn($time_in)
+    public function setTimeIn($timeIn)
     {
-        $this->time_in = $time_in;
+        $this->timeIn = $timeIn;
     }
 
     /**
-     * @return mixed
+     * @return String
      */
     public function getTimeOut()
     {
-        return $this->time_out;
+        return $this->timeOut;
     }
 
     /**
-     * @param mixed $time_out
+     * @param String $timeOut
      */
-    public function setTimeOut($time_out)
+    public function setTimeOut($timeOut)
     {
-        $this->time_out = $time_out;
+        $this->timeOut = $timeOut;
     }
 
-    public function __toString()
+    /**
+     * @return Employee
+     */
+    public function getEmployee()
     {
-        return $this->status;
+        return $this->employee;
     }
 
-    public function __construct()
+    /**
+     * @param Employee $employee
+     */
+    public function setEmployee($employee)
     {
-        $this->employee = new ArrayCollection();
+        $this->employee = $employee;
     }
 }

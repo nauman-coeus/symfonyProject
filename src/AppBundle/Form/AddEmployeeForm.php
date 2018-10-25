@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: coeus
- * Date: 10/3/18
- * Time: 12:05 PM
- */
 
 namespace AppBundle\Form;
 
@@ -46,7 +40,7 @@ class AddEmployeeForm extends AbstractType
                 'label'=> false,
                 'required'=> false,
             ])
-            ->add('boss_id', null, [
+            ->add('bossId', null, [
                 'label'=> false,
             ])
             ->add('designation', null, [
@@ -61,7 +55,7 @@ class AddEmployeeForm extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => 'AppBundle\Entity\Employees'
+            'data_class' => 'AppBundle\Entity\Employee'
         ]);
     }
 }
